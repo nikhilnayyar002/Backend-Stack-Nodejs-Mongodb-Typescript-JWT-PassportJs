@@ -1,0 +1,126 @@
+### 
+
+	POST http://localhost:3000/api/auth/register
+    Content-Type: application/json
+
+	{
+        "fullName": "Nikhil Nayyar",
+        "password": "nikhil_nayyar",
+        "email":"nikhilnayyar002@gmail.com",
+        "isEmployee":true
+	}
+
+###
+
+	POST http://localhost:3000/api/auth/authenticate
+    Content-Type: application/json
+
+	{
+        "email": "nikhilnayyar002@gmail.com",
+        "password": "nikhil_nayyar"
+	}
+
+### 
+
+	GET http://localhost:3000/api/auth/userProfile
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIxNTk5Mzg3Mzc2OTI5IiwiaWF0IjoxNTk5Mzg3MzgwLCJleHAiOjE1OTkzODkxODB9.EAWB0xm-hLMZ5KbSlSihi_U4yOwGP8d6w6vVmqBz8hk
+
+
+### 
+
+	POST http://localhost:3000/api/auth/register
+    Content-Type: application/json
+
+	{
+        "fullName": "Nikhil Nayyar Candidate",
+        "password": "nikhil_nayyar",
+        "email":"nikhilnayyarcand002@gmail.com",
+        "isEmployee":false
+	}
+
+###
+
+	POST http://localhost:3000/api/auth/authenticate
+    Content-Type: application/json
+
+	{
+        "email": "nikhilnayyarcand002@gmail.com",
+        "password": "nikhil_nayyar"
+	}
+
+### 
+
+	GET http://localhost:3000/api/auth/userProfile
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIxNTk5Mzg3NjQ3MzkzIiwiaWF0IjoxNTk5Mzg3Njg4LCJleHAiOjE1OTkzODk0ODh9.KWXfv1Ze2CXo7gjOER-gpQtIN2VekMcv0MGZMXn8y_Q
+
+
+
+### 
+
+	POST http://localhost:3000/api/jobs
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIxNTk5Mzg3Mzc2OTI5IiwiaWF0IjoxNTk5Mzg3MzgwLCJleHAiOjE1OTkzODkxODB9.EAWB0xm-hLMZ5KbSlSihi_U4yOwGP8d6w6vVmqBz8hk
+    Content-Type: application/json
+
+    {
+       "_id":"job1",
+       "title":"anyvalue",
+       "location":"anyvalue",
+       "date,status":"anyvalue",
+       "candidate":"anyvalue",
+       "more":"anyvalue",
+       "screen":"anyvalue",
+       "interview":"anyvalue",
+       "offer":"anyvalue",
+       "onHolds":"anyvalue",
+       "rejected":"anyvalue"
+    }
+
+
+### 
+
+	GET http://localhost:3000/api/jobs/1599387376929
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIxNTk5Mzg3Mzc2OTI5IiwiaWF0IjoxNTk5Mzg3MzgwLCJleHAiOjE1OTkzODkxODB9.EAWB0xm-hLMZ5KbSlSihi_U4yOwGP8d6w6vVmqBz8hk
+
+### 
+
+	GET http://localhost:3000/api/candidate/jobs
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIxNTk5Mzg3NjQ3MzkzIiwiaWF0IjoxNTk5Mzg3Njg4LCJleHAiOjE1OTkzODk0ODh9.KWXfv1Ze2CXo7gjOER-gpQtIN2VekMcv0MGZMXn8y_Q
+
+### 
+
+	GET http://localhost:3000/api/candidate/accepted-jobs
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIxNTk5Mzg3NjQ3MzkzIiwiaWF0IjoxNTk5Mzg3Njg4LCJleHAiOjE1OTkzODk0ODh9.KWXfv1Ze2CXo7gjOER-gpQtIN2VekMcv0MGZMXn8y_Q
+
+### 
+
+	GET http://localhost:3000/api/candidate/rejected-jobs
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIxNTk5Mzg3NjQ3MzkzIiwiaWF0IjoxNTk5Mzg3Njg4LCJleHAiOjE1OTkzODk0ODh9.KWXfv1Ze2CXo7gjOER-gpQtIN2VekMcv0MGZMXn8y_Q
+
+
+### 
+
+	GET http://localhost:3000/api/candidate/accept-job/job1
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIxNTk5Mzg3NjQ3MzkzIiwiaWF0IjoxNTk5Mzg3Njg4LCJleHAiOjE1OTkzODk0ODh9.KWXfv1Ze2CXo7gjOER-gpQtIN2VekMcv0MGZMXn8y_Q
+
+### 
+
+	GET http://localhost:3000/api/candidate/reject-job/job1
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIxNTk5Mzg3NjQ3MzkzIiwiaWF0IjoxNTk5Mzg3Njg4LCJleHAiOjE1OTkzODk0ODh9.KWXfv1Ze2CXo7gjOER-gpQtIN2VekMcv0MGZMXn8y_Q
+
+### 
+
+	GET http://localhost:3000/api/candidate/unaccept-job/job1
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIxNTk5Mzg3NjQ3MzkzIiwiaWF0IjoxNTk5Mzg3Njg4LCJleHAiOjE1OTkzODk0ODh9.KWXfv1Ze2CXo7gjOER-gpQtIN2VekMcv0MGZMXn8y_Q
+
+### 
+
+	GET http://localhost:3000/api/candidate/unreject-job/job1
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIxNTk5Mzg3NjQ3MzkzIiwiaWF0IjoxNTk5Mzg3Njg4LCJleHAiOjE1OTkzODk0ODh9.KWXfv1Ze2CXo7gjOER-gpQtIN2VekMcv0MGZMXn8y_Q
+
+
+
+
+
+
+
+    

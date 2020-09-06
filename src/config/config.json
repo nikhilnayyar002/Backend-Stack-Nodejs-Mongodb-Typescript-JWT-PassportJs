@@ -1,0 +1,20 @@
+{
+    "restAPI": "/api",
+    "server":{
+      "dev":{
+          "isProduction":false,
+          "port":3000,
+          "mongoURI":"mongodb+srv://temp_user_1:temp_user_1@cluster0.moe1a.mongodb.net/employee-client?retryWrites=true&w=majority",
+          "jwtSecret":"SECRET#123",
+          "jwtExp": "30m"
+      },
+      "prod":{
+          "isProduction":true,
+          "port":3000,
+          "mongoURI":"mongodb+srv://temp_user_1:temp_user_1@cluster0.moe1a.mongodb.net/employee-client?retryWrites=true&w=majority",
+          "jwtSecret":"SECRET#123",
+          "jwtExp": "30m"
+      }
+    },
+    "passwordSecret":"SECRET#123"
+}
