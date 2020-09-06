@@ -1,7 +1,10 @@
-# Backend Stack (Nodejs, Mongodb, Typescript, JWT, PassportJs)
+# A Backend Stack Example (Nodejs, Mongodb, Typescript, JWT, PassportJs)
 
-> **Note:**
-> A mongodb url is predefined in this example therefore you may specify your own if you want.
+<br>
+
+**Live URL:** https://my-test-app-002.herokuapp.com/
+
+<br>
 
 ## Setup
 
@@ -29,6 +32,10 @@
  	   "passwordSecret":"SECRET#123"
  	}	
 	```
+    
+    > **Note:**
+    > A mongodb url is predefined in this example therefore you may specify your own if you want.
+
 * npm install
 
 ## Running
