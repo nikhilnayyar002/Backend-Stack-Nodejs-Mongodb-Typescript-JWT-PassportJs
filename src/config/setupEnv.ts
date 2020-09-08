@@ -1,4 +1,4 @@
-import { globalEnvironment } from "./global.config";
+import { globalEnvironment, processEnvironment } from "./global.config";
 
 
 // check env.
@@ -12,3 +12,6 @@ Object.keys(envConfig).forEach(key => process.env[key] = envConfig[key]);
 
 /** if externally ort was provided set to it. */
 if(port) process.env.port = port
+
+
+export {config, envConfig} 

@@ -1,10 +1,7 @@
 import jwt from "jsonwebtoken";
 import express from "express";
 import { UserModal, User } from "../modal/user";
-import { processEnvironment } from "./global.config";
-
-
-const environment: processEnvironment = <any>process.env;
+import { envConfig } from './setupEnv';
 
 
 export class HttpException extends Error {
@@ -40,7 +37,7 @@ export const verifyJwtToken: express.RequestHandler = (req, res, next) => {
   else {
     jwt.verify(
       token,
-      environment.jwtSecret,
+      envConfig.jwtSecret,
       /**
        * decoded ->  { _id: 1563274945715, iat: 1563773668, exp: 1563775468 }
        * _id -> userID, because the generated jwtToken was signed with payload as userID

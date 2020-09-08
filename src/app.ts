@@ -1,12 +1,12 @@
 import express from "express";
 import morgan from "morgan";
-//import  cors from 'cors'
+import cors from 'cors'
 import passport from "passport";
 import mongoose from "mongoose";
+import { config, envConfig } from "./config/setupEnv";
 
 /** initialize by just importing */
 import "./config/passportConfig";
-import "./config/setupEnv";
 /** end */
 
 import { userRouter } from "./router/user.router";
@@ -15,15 +15,9 @@ import { HttpException, verifyJwtToken } from "./config/global";
 var compression = require("compression");
 var helmet = require("helmet");
 
-import {
-  processEnvironment,
-  globalEnvironment
-} from "./config/global.config";
 import { candidateRouter } from "./router/candidate.router";
 import { jobRouter } from "./router/job.router";
 
-const environment: processEnvironment = <any>process.env;
-let config: globalEnvironment = require("./config/config.json");
 
 mongoose.set("bufferCommands", false);
 //mongoose.set('bufferMaxEntries', 0);
@@ -33,7 +27,7 @@ mongoose.set("useNewUrlParser", true);
 mongoose.set("useCreateIndex", true);
 mongoose.set('useUnifiedTopology', true);
 
-mongoose.connect(environment.mongoURI, err => {
+mongoose.connect(envConfig.mongoURI, err => {
   if (!err) {
     console.log("MongoDB connection succeeded.");
   } else {
@@ -59,8 +53,8 @@ let app = express();
 
 // If an incoming request uses a protocol other than HTTPS,
 // redirect that request to the same url but with HTTPS
-const forceSSL = function() {
-  return function(req, res, next) {
+const forceSSL = function () {
+  return function (req, res, next) {
     if (req.headers["x-forwarded-proto"] !== "https") {
       return res.redirect(["https://", req.get("Host"), req.url].join(""));
     }
@@ -71,10 +65,13 @@ const forceSSL = function() {
 app.use(compression());
 app.use(helmet());
 
-environment.isProduction?(
-  app.use(morgan("dev"))
-):null
-
+envConfig.isProduction ? (
+  app.use(forceSSL())
+) : (
+    app.use(morgan("dev")),
+    /** allow cross-origin acess */
+    app.use(cors())
+  )
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -84,8 +81,6 @@ app.use(express.urlencoded({ extended: false }));
 /** use passport local strategy */
 app.use(passport.initialize());
 
-/** allow cross-origin acess */
-// if(!environment.isProduction) app.use(cors());
 
 // app.all('*',function(req, res, next) {
 //   res.set('Access-Control-Allow-Origin', '*');
